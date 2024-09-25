@@ -191,3 +191,27 @@ def err405():
 @app.route("/lab1/error418")
 def err418():
     return "Ошибка 418. Я - чайник.", 418
+
+@app.route("/lab1/error")
+def error():
+    first_num = 10
+    second_num = 0
+    return '''
+    <!doctype html>
+        <html>
+            <body>
+                Деление: ''' + first_num/second_num + '''
+            </body>
+        </html>
+        '''
+@app.errorhandler(500)
+def not_f(err):
+    return '''
+        <!doctype html>
+        <html>
+            <body>
+                <h1>Внутренняя ошибка сервера.</h1>
+                <p>На сервере произошла внутренняя ошибка, и он не смог выполнить ваш запрос. Либо сервер перегружен, либо в приложении ошибка.</p>
+            </body>
+        </html>
+        ''', 500
