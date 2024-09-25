@@ -3,7 +3,16 @@ app = Flask(__name__)
 
 @app.errorhandler(404)
 def not_found(err):
-    return "Нет такой страницы", 404
+    paths = url_for("static", filename="Error404.png")
+    return '''
+        <!doctype html>
+        <html>
+            <body>
+                <p>Ошибка 404. Не найдено.</p>
+                <img src="''' + paths + '''">
+            </body>
+        </html>
+        ''', 404
 
 @app.route("/")
 def start():
