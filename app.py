@@ -158,3 +158,27 @@ def created():
     </div>
 </html>    
 ''', 201
+
+@app.route("/lab1/error400")
+def err400():
+    return "Ошибка 400. Неправильный запрос", 400
+
+@app.route("/lab1/error401")
+def err401():
+    return "Ошибка 401. Не авторизован", 401
+
+@app.route("/lab1/error402")
+def err402():
+    return "Ошибка 402. Необходима оплата", 402
+
+@app.route("/lab1/error403")
+def err403():
+    return "Ошибка 403. Запрещено", 403
+
+@app.route("/lab1/error405")
+def err405():
+    return "Ошибка 405. Метод не поддерживается", 405
+
+@app.route("/lab1/error418")
+def err418():
+    return "Ошибка 418. Я - чайник.", 418
