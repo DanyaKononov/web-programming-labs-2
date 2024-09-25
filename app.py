@@ -46,7 +46,7 @@ def oak():
     </head>
     <body>
         <h1>Дуб</h1>
-        <img class='oak' src="''' + path + '''">
+        <img src="''' + path + '''">
     </body>
 </html>
 '''
@@ -62,6 +62,21 @@ def counter():
 <html>
     <body>
         Сколько раз вы сюда заходили: ''' + str(count) + '''
+        <a href="/lab1/cleaner">Очистить счётчик!</a>
+    </body>
+</html>
+'''
+
+@app.route('/lab1/cleaner')
+def clean():
+    global count
+    count = 0
+    return '''
+<!doctype html>
+<html>
+    <body>
+        Счётчик был сброшен до: ''' + str(count) + '''
+        <a href="/lab1/counter">Вернутся на счётчик!</a>
     </body>
 </html>
 '''
