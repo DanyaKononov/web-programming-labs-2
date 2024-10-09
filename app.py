@@ -1,4 +1,4 @@
-from flask import Flask, url_for, redirect
+from flask import Flask, url_for, redirect, render_template
 app = Flask(__name__)
 
 @app.errorhandler(404)
@@ -250,6 +250,9 @@ def new():
             'X-Range': 'dimple',
         }
 
+
+
+
 @app.route('/lab2/a')
 def a():
     return 'без слеша'
@@ -257,3 +260,32 @@ def a():
 @app.route('/lab2/a/')
 def a2():
     return 'со слешем'
+
+flower_list = ['Роза', 'Тюльпан', 'Незабудка', 'Ромашка']
+
+@app.route('/lab2/flowers/<int:flower_id>')
+def flowers(flower_id):
+    if flower_id >= len(flower_list):
+        return "Такого цветка нет", 404
+    else:
+        return "Цветок:" + flower_list[flower_id]
+
+@app.route('/lab2/add_flower/<name>')
+def add_flower(name):
+    flower_list.append(name)
+    return f'''
+<!doctype html>
+<html>
+    <body>
+        <h1>Добавлен новый цветок</h1>
+        <p>Название нового цветка: {name} </p>
+        <p>Всего цветов: {len(flower_list)}</p>
+        <p>Полный список: {flower_list} </p>
+    </body>
+</html>        
+'''
+
+@app.route('/lab2/example')
+def example():
+    name = 'Данил Кононов'
+    return render_template('example.html', name=name)
