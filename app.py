@@ -345,3 +345,25 @@ def clean_flowers():
         </body>
     </html>        
     '''
+@app.route('/lab2/calc/<int:a>/<int:b>')
+def calc(a, b):
+    return f'''
+    <!doctype html>
+        <html>
+            <body>
+                <p>{a} + {b} = {a+b}</p>
+                <p>{a} - {b} = {a-b}</p>
+                <p>{a} x {b} = {a*b}</p>
+                <p>{a} / {b} = {a/b}</p
+                <p>{a}<sup>{b}</sup> = {a**b}</p>
+            </body>
+        </html>
+        '''
+
+@app.route('/lab2/calc/')
+def redir():
+    return  redirect("/lab2/calc/1/1")
+
+@app.route('/lab2/calc/<int:a>')
+def redir_second(a):
+    return  redirect(f"/lab2/calc/{a}/1")   
