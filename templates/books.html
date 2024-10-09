@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{# Номер лабораторной #}
+{% block lab %} Лабораторная работа 2{% endblock %}
+
+{# основной контент #}
+{% block main %}
+<ul>
+    {% for b in books %}
+    <li>{{ loop.index }} -  {{ b.author }}   {{ b.name }}   {{b.janr}}   {{b.count_str}}</li>
+    {% endfor %}
+</ul>   
+{% endblock %}

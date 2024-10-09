@@ -366,4 +366,19 @@ def redir():
 
 @app.route('/lab2/calc/<int:a>')
 def redir_second(a):
-    return  redirect(f"/lab2/calc/{a}/1")   
+    return  redirect(f"/lab2/calc/{a}/1")
+
+@app.route('/lab2/books/')
+def book():
+    books = [{'author': 'Марк Твен', 'name': 'Приключения Тома Сойера', 'janr': 'Детская литература', 'count_str': 191},
+              {'author': 'Лев Толстой', 'name': 'Война и мир', 'janr': 'Роман', 'count_str': 1300},
+              {'author': 'Маргарет Митчелл', 'name': 'Унесённые ветром', 'janr': 'Роман', 'count_str': 640},
+              {'author': 'Стивен Кинг', 'name': 'Зелёная миля', 'janr': 'Хоррор', 'count_str': 384},
+              {'author': 'Кэтрин Стокетт', 'name': 'Прислуга', 'janr': 'Роман', 'count_str': 512},
+              {'author': 'Джордж Р. Р. Мартин', 'name': 'Буря мечей', 'janr': 'Фентези', 'count_str': 1521},
+              {'author': 'Борис Львович Васильев', 'name': 'Приключения Тома Сойера', 'janr': 'Военная проза', 'count_str': 352},
+              {'author': 'Ли Бардуго', 'name': 'Продажное королевство', 'janr': 'Фентези', 'count_str': 672},
+              {'author': 'Борис Львович Васильев', 'name': 'А зори здесь тихие', 'janr': 'История', 'count_str': 128},
+              {'author': 'Джонатан Страуд', 'name': 'Пустая могила', 'janr': 'Мистерия', 'count_str': 480},
+             ]
+    return render_template('books.html', books=books)
