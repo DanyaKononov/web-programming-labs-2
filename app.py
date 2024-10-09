@@ -249,3 +249,11 @@ def new():
         ''', 200, {
             'X-Range': 'dimple',
         }
+
+@app.route('/lab2/a')
+def a():
+    return 'без слеша'
+
+@app.route('/lab2/a/')
+def a2():
+    return 'со слешем'
