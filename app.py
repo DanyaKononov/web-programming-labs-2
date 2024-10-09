@@ -28,7 +28,8 @@ def start():
             </header>
             <body> 
                 <h2>Лабораторные работы</h2>
-                <a href="/lab1">Первая лабораторная</a>
+                <a href="/lab1">Первая лабораторная</a><br>
+                <a href="/lab2">Вторая лабораторная</a><br>
             </body>
             <footer>
                 <p>Кононов Данил Александрович, ФБИ-21, 3 курс, 2024</p>
@@ -49,7 +50,8 @@ def starter():
             </header>
             <body> 
                 <h2>Лабораторные работы</h2>
-                <a href="/lab1">Первая лабораторная</a>
+                <a href="/lab1">Первая лабораторная</a><br>
+                <a href="/lab2">Вторая лабораторная</a><br>
             </body>
             <footer>
                 <p>Кононов Данил Александрович, ФБИ-21, 3 курс, 2024</p>
@@ -392,3 +394,8 @@ def cars_describe():
             {'img': '/static/Ferrari.png', 'name': 'Ferrari', 'describe': 'Фелипе Масса: "Наш девиз - смотреть вперед и не сдаваться" В традиционной авторской колонке на официальном сайте Ferrari, Фелипе Масса вспоминал о Гран При Сингапура, говорил о регламенте машины безопасности и ситуации в чемпионате... Фелипе Масса: "После Гран При Сингапура наш девиз - смотреть вперед и не сдаваться.'},
             ]
     return render_template('cars.html', cars=cars)
+
+@app.route('/lab2/favicon')
+def favi():
+    favicon = url_for("static", filename="Logo.png")
+    return render_template('base.html',favicon=favicon)
