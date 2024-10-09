@@ -141,6 +141,8 @@ def oak():
 </html>
 '''
 
+count = 0
+
 @app.route('/lab1/counter')
 def counter():
     global count
