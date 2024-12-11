@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{# Номер лабораторной #}
+{% block lab %} Лабораторная работа 2{% endblock %}
+
+{# основной контент #}
+{% block main %}
+<div>
+    {% for c in cars %}
+    <img src= {{ c.img }} style="height: 400px; width: auto; margin-left: 600px;">
+    <h1>{{ c.name }}</h1>
+    <p>{{c.describe}}</p>
+    {% endfor %}
+</div> 
+{% endblock %}

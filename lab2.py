@@ -21,7 +21,7 @@ def flowers(flower_id):
     if flower_id >= len(flower_list):
         return "Такого цветка нет", 404
     else:
-        return render_template('flowers.html',flower_id=flower_id)
+        return render_template('lab2/flowers.html',flower_id=flower_id)
 
 
 @lab2.route('/lab2/add_flower/<name>')
@@ -61,18 +61,18 @@ def example():
               {'name': 'Мандарины', 'price': 95},
               {'name': 'Манго', 'price': 321},
              ]
-    return render_template('example.html', name=name, lab_num=lab_num, group=group, course=course, fruits=fruits)
+    return render_template('lab2/example.html', name=name, lab_num=lab_num, group=group, course=course, fruits=fruits)
 
 
 @lab2.route('/lab2/')
 def second():
-    return render_template('lab2.html')
+    return render_template('lab2/lab2.html')
 
 
 @lab2.route('/lab2/filters')
 def filters():
     phrase = "О <b>сколько</b> <u>нам</u> <i>открытий</i> чудных..."
-    return render_template('filters.html', phrase=phrase)
+    return render_template('lab2/filters.html', phrase=phrase)
 
 
 @lab2.route('/lab2/add_flower/')
@@ -117,7 +117,7 @@ def calc(a, b):
                 <p>{a} + {b} = {a+b}</p>
                 <p>{a} - {b} = {a-b}</p>
                 <p>{a} x {b} = {a*b}</p>
-                <p>{a} / {b} = {a/b}</p
+                <p>{a} / {b} = {a/b}</pq
                 <p>{a}<sup>{b}</sup> = {a**b}</p>
             </body>
         </html>
@@ -126,12 +126,12 @@ def calc(a, b):
 
 @lab2.route('/lab2/calc/')
 def redir():
-    return  redirect("/lab2/calc/1/1")
+    return  redirect("lab2/calc/1/1")
 
 
 @lab2.route('/lab2/calc/<int:a>')
 def redir_second(a):
-    return  redirect(f"/lab2/calc/{a}/1")
+    return  redirect(f"lab2/calc/{a}/1")
 
 
 @lab2.route('/lab2/books/')
@@ -147,7 +147,7 @@ def book():
               {'author': 'Борис Львович Васильев', 'name': 'А зори здесь тихие', 'janr': 'История', 'count_str': 128},
               {'author': 'Джонатан Страуд', 'name': 'Пустая могила', 'janr': 'Мистерия', 'count_str': 480},
              ]
-    return render_template('books.html', books=books)
+    return render_template('/lab2/books.html', books=books)
 
 
 @lab2.route('/lab2/cars/')
@@ -158,7 +158,7 @@ def cars_describe():
             {'img': '/static/Porsche.jpg', 'name': 'Porsche', 'describe': '"На гонку в воскресенье, в дорогу в понедельник" – девиз многих водителей Porsche 356 в 1950-х. Ведь 356-я модель могла в выходные выиграть гонку, а потом снова стать надежным автомобилем для повседневной жизни.'},
             {'img': '/static/Ferrari.png', 'name': 'Ferrari', 'describe': 'Фелипе Масса: "Наш девиз - смотреть вперед и не сдаваться" В традиционной авторской колонке на официальном сайте Ferrari, Фелипе Масса вспоминал о Гран При Сингапура, говорил о регламенте машины безопасности и ситуации в чемпионате... Фелипе Масса: "После Гран При Сингапура наш девиз - смотреть вперед и не сдаваться.'},
             ]
-    return render_template('cars.html', cars=cars)
+    return render_template('lab2/cars.html', cars=cars)
 
 
 @lab2.route('/lab2/favicon')
