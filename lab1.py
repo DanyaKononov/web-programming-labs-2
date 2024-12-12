@@ -74,8 +74,8 @@ def author():
 
 @lab1.route("/lab1/oak")
 def oak():
-    path = url_for("static", filename="oak.jpg")
-    connectcss = url_for("static", filename="lab1.css")
+    path = url_for("static", filename="lab1/oak.jpg")
+    connectcss = url_for("static", filename="lab1/lab1.css")
     return '''
 <!doctype html>
 <html>
@@ -187,7 +187,7 @@ def error():
 
 @lab1.route("/lab1/my")
 def new():
-    pic = url_for("static", filename="Garou.jpg")
+    pic = url_for("static", filename="lab1/Garou.jpg")
     return '''
         <!doctype html>
         <html>

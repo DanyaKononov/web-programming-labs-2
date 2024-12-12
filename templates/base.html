@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-    <link type="Image/x-icon" href='{{ favicon }}' rel="icon">
+    <link rel="icon" href="{{url_for('static', filename='/lab1/Logo.png')}}">
     <title>Данил Кононов. {% block lab %}{% endblock %}</title>
 </head>
 <body>
