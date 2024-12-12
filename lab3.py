@@ -13,8 +13,8 @@ def labor3():
 def cookie():
 		resp = make_response(redirect('/lab3/'))
 		resp.set_cookie('name', 'Alex', max_age=1)
-		resp.set_cookie('age', '20')
-		resp.set_cookie('name_color', 'grey')
+		resp.set_cookie('age', '20', max_age=1)
+		resp.set_cookie('name_color', 'grey', max_age=1)
 		return resp
 
 
@@ -65,3 +65,22 @@ def pay():
 @lab3.route('/lab3/success')
 def	good():
 		return render_template('/lab3/success.html', price = price)
+
+
+@lab3.route('/lab3/settings')
+def settings():
+    color = request.args.get('color')
+    backgroundcolor = request.args.get('backgroundcolor')
+    fontsize = request.args.get('fontsize')
+    if color or backgroundcolor or fontsize:
+        resp = make_response(redirect('/lab3/settings'))
+        resp.set_cookie('color', color)
+        resp.set_cookie('backgroundcolor', backgroundcolor)
+        resp.set_cookie('fontsize', fontsize)
+        return resp
+    
+    color = request.cookies.get('color')
+    backgroundcolor = request.cookies.get('backgroundcolor')
+    fontsize = request.cookies.get('fontsize')
+    resp = make_response(render_template('lab3/settings.html', color=color, backgroundcolor=backgroundcolor, fontsize=fontsize))
+    return resp
