@@ -115,6 +115,7 @@ def tree():
 
 
 users=[
+    {'login': 'Admin', 'password': '0000', 'sex': 'male', 'realname': 'Админ Админов'},
     {'login': 'Grisha', 'password': '1111', 'sex': 'male', 'realname': 'Гриша Измайлов'},
     {'login': 'Petya', 'password': '2222','sex': 'male', 'realname': 'Петя Петров'},
     {'login': 'Leon', 'password': '3333', 'sex': 'male', 'realname': 'Леон Крутин'},
