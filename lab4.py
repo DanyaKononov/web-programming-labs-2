@@ -189,3 +189,40 @@ def fridge():
     temp = request.form.get('temp')
     session['temp'] = temp
     return redirect('/lab4/fridge')
+
+
+@lab4.route('/lab4/seed', methods=['GET', 'POST'])
+def seed():
+    if request.method == 'GET':
+            return render_template('lab4/seed.html')
+    
+    seed = request.form.get('seed')
+    col = request.form.get('col')
+    if seed == 'yachmen':
+        seed = 'ячмень'
+        price = 12345
+    elif seed == 'oves':
+        seed = 'овес'
+        price = 8522
+    elif seed == 'psheno':
+        seed = 'пшеница'
+        price = 8722
+    else:
+        seed = 'рожь'
+        price = 14111
+
+
+    if int(col) == 0:
+        error = "Вес может быть строго больше 0!"
+        return render_template('lab4/seed.html', error=error)
+    elif int(col) > 500:
+        error = "Такого объема сейчас не в наличии"
+        return render_template('lab4/seed.html', error=error)
+    elif int(col) < 50:
+        price = price * int(col)
+        return render_template('lab4/seed.html', price=price, seed=seed, col=col)
+    else:
+        sale = 'Скидка применена за большой объем'
+        saleint = (price*int(col)*0.1)
+        price = price*int(col) - saleint
+        return render_template('lab4/seed.html', price=price, seed=seed, sale=sale, saleint = saleint, col=col)

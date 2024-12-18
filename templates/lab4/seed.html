@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block lab %}Лабораторная рабоат 4{% endblock %}
+
+
+{% block main %}
+    <h1>Заказ зерна</h1>
+    <form method="post">
+        {% if price %}
+        <div>Вы заказли {{seed}} на сумму {{price}} рублей, вес {{col}}т. {%if sale%}Скидка 10% за большой объем,
+             размер скидки: {{saleint}} рублей{%else%}{%endif%}</div>
+        <div><a href="/lab4/seed">Вернутся</a></div>
+        {% else %}
+        <label for="seed">Выберите зерно: </label>
+        <select id="seed" name="seed" required>
+            <option value="yachmen">ячмень: 12 345 руб/т</option>
+            <option value="oves">овес: 8 522 руб/т</option>
+            <option value="psheno">пшеница: 8 722 руб/т</option>
+            <option value="rozh">рожь: 14 111 руб/т</option>
+        </select><br>
+        <label for="col">Выберите количество: </label>
+        <input type="number" id="col" name="col" required>
+        <button type="submit">Заказать!</button>
+        {% endif %}
+        {% if error %}
+        <div>{{error}}</div>
+        {% else %}
+        {% endif %}
+    </form>
+{% endblock %}
