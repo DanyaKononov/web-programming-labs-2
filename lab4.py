@@ -119,6 +119,7 @@ users=[
     {'login': 'Petya', 'password': '2222','sex': 'male', 'realname': 'Петя Петров'},
     {'login': 'Leon', 'password': '3333', 'sex': 'male', 'realname': 'Леон Крутин'},
     {'login': 'Andrey', 'password': '4444','sex': 'male', 'realname': 'Андрей Балконский'},
+    {'login': 'Victor', 'password': '5555','sex': 'male', 'realname': 'Виктор Цой'},
 			]
 
 realname1 = ''
