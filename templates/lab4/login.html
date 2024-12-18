@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block lab %}Лабораторная работа 4{% endblock %}
+
+
+{% block main %}
+    {% if realname %}
+        <h1>Добро пожаловать, {{realname}}!</h1>
+        <div>
+            <form action="/lab4/logout" method="post">
+                <button>Выход</button>
+            </form>
+        </div>
+        <a href="/lab4/list_log">Список пользователей</a><br>
+    {% else %}
+    <h1>Вход</h1>
+    <h2>Пожалуйста, авторизируйтесь</h2>
+    <form method="post">
+        <div>
+            <label for="login">Пользователь:</label>
+            {% if login %}
+            <input type="text" id="login" name="login" value='{{login}}' required>
+            {% else %}
+            <input type="text" id="login" name="login" value='{{login}}' required>
+            {% endif %}
+        </div>
+        <div style="margin-top: 5px">
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>{{ error }}</div>
+        <div style="margin-top: 5px">
+            <button type="submit">Войти</button>
+            <button type="reset">Отмена</button>
+        </div>
+    </form>
+    {% endif %}
+{% endblock %}

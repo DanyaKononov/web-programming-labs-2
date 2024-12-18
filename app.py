@@ -12,6 +12,9 @@ app.register_blueprint(lab3)
 app.register_blueprint(lab4)
 
 
+app.secret_key = 'Секрет'
+
+
 @app.errorhandler(404)
 def not_found(err):
     paths = url_for("static", filename="lab1/Error404.png")
