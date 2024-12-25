@@ -113,11 +113,11 @@ def create():
         cur.execute("SELECT * FROM users WHERE login=%s;", (login,))
     else:
         cur.execute("SELECT * FROM users WHERE login=?;", (login,))
-    user_id = cur.fetchone()["id"]
+    login_id = cur.fetchone()["id"]
     if current_app.config['DB_TYPE'] == 'postgres':
-        cur.execute(f"INSERT INTO articles(user_id, title, article_text, is_favorite, is_public) VALUES (%s, %s, %s, %s, %s);", (user_id, title, article_text, is_favorite, is_public))
+        cur.execute(f"INSERT INTO articles(login_id, title, article_text, is_favorite, is_public) VALUES (%s, %s, %s, %s, %s);", (login_id, title, article_text, is_favorite, is_public))
     else:
-        cur.execute(f"INSERT INTO articles(user_id, title, article_text, is_favorite, is_public) VALUES (?, ?, ?, ?, ?);", (user_id, title, article_text, is_favorite, is_public))
+        cur.execute(f"INSERT INTO articles(login_id, title, article_text, is_favorite, is_public) VALUES (?, ?, ?, ?, ?);", (login_id, title, article_text, is_favorite, is_public))
     db_close(conn, cur)
     return redirect('/lab5')
 
@@ -131,11 +131,11 @@ def list():
             cur.execute(f"SELECT id FROM users WHERE login=%s;", (login,))
         else:
             cur.execute(f"SELECT id FROM users WHERE login=?;", (login,))
-        user_id = cur.fetchone()['id']
+        login_id = cur.fetchone()['id']
         if current_app.config['DB_TYPE'] == 'postgres':
-            cur.execute(f"SELECT * FROM articles WHERE user_id=%s;", (user_id,))
+            cur.execute(f"SELECT * FROM articles WHERE login_id=%s;", (login_id,))
         else:
-            cur.execute(f"SELECT * FROM articles WHERE user_id=?;", (user_id,))
+            cur.execute(f"SELECT * FROM articles WHERE login_id=?;", (login_id,))
         articles = cur.fetchall()
 
         if current_app.config['DB_TYPE'] == 'postgres':
@@ -182,7 +182,7 @@ def reda():
     return render_template('lab5/redact.html', article_text=article_text, article_title=article_title, article_id=article_id, is_favorite=is_favorite, is_public=is_public)
 
 
-@lab5.route('/lab5/redact', methods=['post'])
+@lab5.route('/lab5/redact2', methods=['post'])
 def redact2():
     login = session.get('login')
     if not login:
@@ -225,6 +225,5 @@ def delete_action():
     db_close(conn, cur)
 
     return redirect('/lab5/articles')
-
 
 
