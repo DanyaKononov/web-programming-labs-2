@@ -10,8 +10,6 @@ function getOfficeList() {
         'jsonrpc': '2.0',
         'method': 'info',
         'id': Math.round(Math.random()*1000)
-         
-
     };
     fetch(url, {
         method: 'POST',
@@ -52,8 +50,6 @@ function getOfficeList() {
 
     const totalpriceElement = document.getElementById('total-price');
     totalpriceElement.innerText = `Общая стоимость аренды: ${totalprice} руб. `;
-
-
     });
 }
 
@@ -150,5 +146,4 @@ function cancelBooking(officeNumber) {
     <ul id="office-list"></ul>
     <ul id="office-list"></ul>
     <h3 id="total-price">Общая стоимость аренды: 0 руб.</h3>
-
 {% endblock %}
