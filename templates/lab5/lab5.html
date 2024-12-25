@@ -11,7 +11,11 @@
 		<a style="text-decoration: none; font-size: 25px; margin-left: 25px" href="/lab5/create">Создать статью</a>
 		<a style="text-decoration: none; font-size: 25px; margin-left: 25px" href="/lab5/login">Вход</a>
 		<a style="text-decoration: none; font-size: 25px; margin-left: 25px" href="/lab5/register">Регестрация</a>
+		{%if login%}
+    <span style="font-size: 25px; margin-left: 25px">{{login}}</span>
+		{%else%}
 		<span style="font-size: 25px; margin-left: 25px">Anonymous</span>
+		{%endif%}
 	</div>
 </div>
 {% endblock %}
