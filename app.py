@@ -1,4 +1,5 @@
 from flask import Flask, url_for, redirect, render_template
+import os
 from lab1 import lab1
 from lab2 import lab2
 from lab3 import lab3
@@ -14,7 +15,8 @@ app.register_blueprint(lab4)
 app.register_blueprint(lab5)
 
 
-app.secret_key = 'Секрет'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'Секрет')
+app.config['DB_TYPE'] = os.getenv('DB_TYPE', 'postgres')
 
 
 @app.errorhandler(404)
