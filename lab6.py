@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, request, redirect, session
-lab6 = Blueprint("lab6", __name__)
+from flask import Blueprint, render_template, request, session,redirect, current_app
+
+lab6 = Blueprint('lab6', __name__)
 
 
 offices = []
