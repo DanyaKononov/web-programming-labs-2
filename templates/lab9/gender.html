@@ -1,0 +1,79 @@
+{% block main %}
+
+
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background-image: url('https://sp-izumrud.ru/wp-content/uploads/2022/10/Novogodnyaya_noch_Izumrud_2.jpeg');
+        color: #ffffff;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 4em;
+        color: #61dafb;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    form {
+        background-color: rgba(50, 50, 50, 0.9);
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        width: 300px;
+        transition: transform 0.3s;
+    }
+
+    form:hover {
+        transform: scale(1.05);
+    }
+
+    label {
+        font-size: 1.1em;
+        color: #ffffff;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+        padding: 12px;
+        font-size: 1em;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        width: 100%;
+        background-color: #3c3f44;
+        color: #ffffff;
+    }
+
+    button {
+        padding: 15px 25px;
+        font-size: 1.2em;
+        background-color: #61dafb;
+        color: #282c34;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    button:hover {
+        background-color: #21a1f1;
+        transform: translateY(-3px);
+    }
+
+</style>
+    <h1>Кто вы?</h1>
+    <form method="POST" action="{{ url_for('lab9.gender', name=name, age=age) }}">
+        <button type="submit" name="gender" value="male">Мужчина</button>
+        <button type="submit" name="gender" value="female">Женщина</button>
+    </form>
+{% endblock %}
