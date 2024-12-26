@@ -3,25 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='lab1/main.css') }}">
-    <link rel="icon" href="{{url_for('static', filename='/lab1/Logo.png')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <link type="Image/x-icon" href="{{ url_for('static', filename='Logo.png') }}" rel="icon">
     <title>Данил Кононов. {% block lab %}{% endblock %}</title>
-		<style>
-				body{
-						{% if request.cookies.get('color') %}
-						color: {{ request.cookies.get('color') }};
-						{% endif %}
-						{% if request.cookies.get('backgroundcolor') %}
-            background-color: {{request.cookies.get('backgroundcolor')}};
-            {% endif %}
-            {% if request.cookies.get('fontsize') %}
-            font-size: {{request.cookies.get('fontsize')}}px;
-            {% endif %}
-				}
-
-		</style>
-		{%block script%}
-			{%endblock%}
 </head>
 <body>
     <header>
