@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{%block lab%}Лабораторная работа 8{%endblock%}
+
+{%block main%}
+    {%if search%}
+    <h1 style="color:rgb(59, 38, 10); font-size: 50px">Статьи {{search}}</h1>
+    {%else%}
+    <h1 style="color:rgb(59, 38, 10); font-size: 50px">Статьи</h1>
+    {%endif%}
+    {%if articles%}
+        <span style="color: rgb(85, 49, 77); font-size: 25px;">Ваши статьи</span>
+        {%if login%}
+                {%for article in articles%}
+                    {%if article['is_favorite']==false%}
+                    <h2 style="color: rgb(44, 32, 37); font-size: 25px">{{article['title']}}</h2> <form action="/lab8/redact" method="post"><input type="hidden" name="article_title" value="{{article['title']}}">
+                        <input type="hidden" name="article_text" value="{{article['article_text']}}"> <input type="hidden" name="article_id" value="{{article['id']}}"><button type="submit">Редактировать</button></form> 
+                        <form method="post" action="/lab8/delete"><input type="hidden" name="article_id" value="{{article['id']}}"><button type="submit">Удалить</button></form>
+                    <blockquote>{{article['article_text']}}</blockquote>
+                    {%endif%}   
+                {%endfor%}
+        {%endif%} 
+    {%else%}
+    <h1 style="color: rgb(44, 32, 37); font-size: 25px">У вас нет статей</h1>
+    {%endif%} 
+{%endblock%}

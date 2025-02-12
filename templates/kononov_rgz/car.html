@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block lab %}РГЗ{% endblock %}
+
+{% block main %}
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #dec756c7;
+    }
+
+
+    .content-wrapper {
+        min-height: calc(100vh - 100px); 
+        padding-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-header {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.5em;
+    }
+
+    .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .cart-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .product-image {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .cart-table button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: background-color 0.3s ease;
+    }
+
+    .cart-table button:hover {
+        background-color: #45a049;
+    }
+
+    .total-price {
+        text-align: right;
+        margin-bottom: 20px;
+        font-size: 1.2em;
+    }
+
+    .action-buttons {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .action-buttons button {
+        background-color: #008CBA;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: background-color 0.3s ease;
+    }
+
+    .action-buttons button:hover {
+        background-color: #007bb5;
+    }
+
+    .empty-cart {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.2em;
+    }
+
+    .thank-you-message {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: green;
+    }
+
+</style>
+
+<div class="content-wrapper">
+    <div class="container">
+        <h1 class="cart-header">Ваша корзина {{ car1 }}</h1>
+        <div class="action-buttons">
+            <form action="/kononov_rgz">
+                <button type="submit">Вернуться в магазин</button>
+            </form>
+        </div>
+        {% if thx %}
+            <div class="thank-you-message">Спасибо за покупку!</div>
+        {% endif %}
+        {% if mabel %}
+            <table class="cart-table">
+                {% for mab in mabel %}
+                    <tr>
+                        <td>{{ mab.name }}</td>
+                    </tr>
+                    <tr>
+                        <td><img src="{{ mab.photo }}" class="product-image"></td>
+                    </tr>
+                    <tr>
+                        <td>{{ mab.price }}р</td>
+                        <td>
+                            <form action="/kononov_rgz/delete_car" method="post">
+                                <input type="hidden" name="car11" value="{{ mab.id }}">
+                                <input type="hidden" name="car1" value="{{ car1 }}">
+                                <button type="submit">Удалить из корзины</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <div class="total-price">Общая сумма {{ total_price.sum }}р</div>
+            <div class="action-buttons">
+                <form action="/kononov_rgz/buy" method="post">
+                    <input type="hidden" name="car1" value="{{ car1 }}">
+                    <button type="submit">Купить</button>
+                </form>
+            </div>
+        {% else %}
+            <div class="empty-cart">Ваша корзина пуста</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

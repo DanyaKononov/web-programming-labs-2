@@ -10,18 +10,8 @@
             <h2>{{ article['title'] }} {% if article['is_favorite'] %} (Любимая) {% endif %}</h2>
             <blockquote>{{ article['article_text'] }}</blockquote>
             
-            <form action="/lab5/favorite/{{ article['id'] }}" method="POST" style="display:inline;">
-                <button type="submit" class="button-link">
-                    {% if article['is_favorite'] %}
-                        Убрать из любимых
-                    {% else %}
-                        Добавить в любимые
-                    {% endif %}
-                </button>
-            </form>
-            
             <!-- Форма для редактирования статьи -->
-            <form action="/lab5/reduct/{{ article['id'] }}" method="GET" style="display:inline;">
+            <form action="/lab5/redact/{{ article['id'] }}" method="GET" style="display:inline;">
                 <button type="submit" class="button-link">Редактировать</button>
             </form>
         {% endfor %}
